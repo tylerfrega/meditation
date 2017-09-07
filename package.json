@@ -1,0 +1,26 @@
+{
+  "name": "meditation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerfrega/meditation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylerfrega/meditation/issues"
+  },
+  "homepage": "https://github.com/tylerfrega/meditation#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mocha": "^3.5.0",
+    "mongoose": "^4.11.10"
+  }
+}
