@@ -18,9 +18,20 @@
   },
   "homepage": "https://github.com/tylerfrega/meditation#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.4",
     "mocha": "^3.5.0",
-    "mongoose": "^4.11.10"
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
   }
 }

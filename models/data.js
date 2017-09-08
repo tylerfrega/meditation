@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const SessionSchema = new Schema({
@@ -19,7 +20,7 @@ const UserSchema = new Schema({
         required: [true, "name feild is required"]
     },
     
-    userName:{
+    username:{
         type:String,
         required: true
     },
@@ -27,6 +28,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    
     sessionData:[SessionSchema]
 
 });
@@ -35,6 +37,15 @@ const UserSchema = new Schema({
 const User = mongoose.model('user', UserSchema);
 
 module.exports = User;
+
+module.exports.createUser = function(newUser, callback){
+    bcrypt.genSalt(10, function(err, salt) {
+	    bcrypt.hash(newUser.password, salt, function(err, hash) {
+	        newUser.password = hash;
+	        newUser.save(callback);
+	    });
+	});
+}
 
 
 
