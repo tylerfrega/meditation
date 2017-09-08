@@ -20,9 +20,9 @@ router.put('/users/:id', function(req, res, next){
     User.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
         User.findOne({_id: req.params.id}).then(function(user){
             res.send(user);
-        })
+        });
         
-    })
+    });
 });
 
 
