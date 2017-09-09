@@ -4,8 +4,33 @@ const User = require('../models/data.js');
 
 
 //gets user journal entries
-router.get('/', function(req, res){
-    // var before = [];
+router.get('/', ensureAuthenticated, function(req, res){
+    var currentUserId = req.session.passport.user;
+ 
+    User.findById(currentUserId, function(err, res){
+        console.log(res);
+        
+    });
+    res.render('index');
+});
+
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }else{
+        //req.flash('error_msg', 'Your are not logged in');
+        res.redirect('/user/login');
+    }
+}
+
+
+
+
+module.exports = router;
+
+
+
+   // var before = [];
     // User.find().then(function(doc){
         
     //     for(i=0; i<doc.length; i++){
@@ -14,10 +39,3 @@ router.get('/', function(req, res){
     //     }
 
     // }).then(res.render('index', {items: before}));
-    res.render('index');
-});
-
-
-
-
-module.exports = router;

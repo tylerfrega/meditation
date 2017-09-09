@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
+var bycrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const SessionSchema = new Schema({
@@ -38,6 +38,7 @@ const User = mongoose.model('user', UserSchema);
 
 module.exports = User;
 
+
 module.exports.createUser = function(newUser, callback){
     bcrypt.genSalt(10, function(err, salt) {
 	    bcrypt.hash(newUser.password, salt, function(err, hash) {
@@ -45,8 +46,24 @@ module.exports.createUser = function(newUser, callback){
 	        newUser.save(callback);
 	    });
 	});
-}
+};
 
+module.exports.getUserByUsername = function(username, callback){
+    var query = {username: username}
+    User.findOne(query, callback);
+};
+
+
+module.exports.getUserById = function(id, callback){
+    User.findById(id, callback);
+};
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+    bycrypt.compare(candidatePassword, hash, function(err, isMatch){
+        if(err) throw err;
+        callback(null, isMatch);
+    });
+}
 
 
 
