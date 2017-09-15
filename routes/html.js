@@ -6,12 +6,15 @@ const User = require('../models/data.js');
 //gets user journal entries
 router.get('/', ensureAuthenticated, function(req, res){
     var currentUserId = req.session.passport.user;
+    var currentUser;
  
     User.findById(currentUserId, function(err, res){
-        console.log(res);
-        
+        currentUser = res; 
+        //console.log(currentUser)
+    }).then(function(){
+     
+       res.render('index',{currentUser});
     });
-    res.render('index');
 });
 
 function ensureAuthenticated(req, res, next){
