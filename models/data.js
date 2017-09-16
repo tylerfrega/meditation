@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var bycrypt = require('bcryptjs');
+var bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const SessionSchema = new Schema({
@@ -59,7 +59,7 @@ module.exports.getUserById = function(id, callback){
 };
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
-    bycrypt.compare(candidatePassword, hash, function(err, isMatch){
+    bcrypt.compare(candidatePassword, hash, function(err, isMatch){
         if(err) throw err;
         callback(null, isMatch);
     });

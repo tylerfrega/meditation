@@ -12,10 +12,18 @@ router.get('/', ensureAuthenticated, function(req, res){
         currentUser = res; 
         //console.log(currentUser)
     }).then(function(){
-     
        res.render('index',{currentUser});
     });
 });
+
+
+router.get('/timer', function(req, res){
+    res.render('timer');
+});
+
+router.get('/after', function(req, res){
+    res.render('after');
+})
 
 function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){

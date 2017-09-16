@@ -8,10 +8,10 @@
        welcome  {{currentUser.name}}
     </li>
 
-<div class="form-group">
-  <label for="newEntry">New Entry:</label>
-  <textarea class="form-control" rows="5" id="newEntry"></textarea>
-   <button type="submit" id="submit" class="btn btn-default">Submit</button>
-</div>
+<form class="form-group" method="GET" action="/timer">
+  <label for="newEntry">How are you feeling today?</label>
+  <textarea class="form-control" rows="5" id="before"></textarea>
+   <button type="submit" id="submit" class="btn btn-default">Submit and start new session</button>
+</form>
 
-   
+  

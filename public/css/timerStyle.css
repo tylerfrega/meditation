@@ -1,0 +1,14 @@
+body {
+	background-image: url('zen.jpg');
+	background-size: 100%;
+	background-attachment: fixed;
+	color:white;
+	font-family:Caveat Brush, cursive;
+
+}
+h2{
+	display:inline;
+}
+#start{
+	margin:10px;
+}

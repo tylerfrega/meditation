@@ -10,9 +10,8 @@ router.get('/user', function(req, res, next){
         currentUser = res; 
         //console.log(currentUser)
     }).then(function(){
-        res.json(currentUser);
-       
-    });
+        res.json(currentUser);         
+    })
 });
 
 
@@ -27,10 +26,21 @@ router.get('/user', function(req, res, next){
 
 router.put('/user/:id', function(req, res, next){
     console.log(req.body);
-    User.findByIdAndUpdate({_id: req.body.id}, {$push: {sessionData:{before: req.body.before}}}).then(function(){
+    User.findByIdAndUpdate({_id: req.body.id}, 
+        {
+            $push: {sessionData:[
+
+                        {before: req.body.before,
+                        after: req.body.after,
+                        sessionTime: req.body.sessionTime}
+            ]
+                }}).then(function(){
+                    
         User.findOne({_id: req.body.id}).then(function(user){
-            res.send(user);
+            //res.send(user);
             console.log(user);
+            
+            
         });
         
     });

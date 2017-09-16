@@ -10,27 +10,40 @@
 
 
 
-$('#submit').on('click', function(){
+$('#submit').on('click', getSessionData);
+
+
+
+ 
+function getSessionData(){
   $.get('/api/user', function(data){
     var userData = data;
-   
 
-  var before = $('#newEntry').val();
-  var newEntry = {
-    text: "new name"
-  }
+  var before = $('#before').val();
+  var after = $('#after').val();
+  var sessionTime = $('#num').val();
+
+  var sessionDataObj = {
+    id:userData._id, 
+    before: before,
+    after: after,
+    sessionTime: sessionTime
+}
 
   $.ajax({
     method: "PUT",
     url: "api/user/" + userData._id,
-    data: {id:userData._id, before: before},
-    success: console.log('it works')
+    data: {id:userData._id, 
+           before: before,
+           after: after,
+           sessionTime: sessionTime
+          },
+    success: console.log(data)
   });
-  console.log(userData._id);
-})
 });
-     
-    
+
+};
+   
 
 
 
